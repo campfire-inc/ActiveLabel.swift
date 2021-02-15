@@ -57,6 +57,9 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
     @IBInspectable public var minimumLineHeight: CGFloat = 0 {
         didSet { updateTextStorage(parseText: false) }
     }
+    @IBInspectable public var letterSpacing: CGFloat = 0 {
+        didSet { updateTextStorage(parseText: false) }
+    }
     @IBInspectable public var highlightFontName: String? = nil {
         didSet { updateTextStorage(parseText: false) }
     }
@@ -321,6 +324,7 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
         
         attributes[NSAttributedString.Key.font] = font!
         attributes[NSAttributedString.Key.foregroundColor] = textColor
+        attributes[NSAttributedString.Key.kern] = letterSpacing
         mutAttrString.addAttributes(attributes, range: range)
         
         attributes[NSAttributedString.Key.foregroundColor] = mentionColor
